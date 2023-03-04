@@ -10,13 +10,23 @@ target_link_libraries(foolib
   ${OpenCV_LIBRARIES}
 )
 
+
+include(CMakePackageConfigHelpers)
+
+target_include_directories(mylib INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+
 # バイナリ: 引数3個目にRUNTIMEを指定する。
 # INSTALL(TARGETS lan_router RUNTIME DESTINATION bin)
 # ライブラリ: 引数3個目にLIBRARY を指定する。
 INSTALL(TARGETS foolib LIBRARY DESTINATION lib)
 # それ以外(スクリプトやconfファイル): 引数1個目にFILESを指定する。
 # INSTALL(FILES lan_interface.conf DESTINATION conf PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+install(TARGETS foolib EXPORT foolib-config)
 
-set(FOOLIB_INCLUDE_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/src)
-set(FOOLIB_LIBRARIES foolib)
+install(EXPORT foolib-config
+    NAMESPACE foolib::
+    DESTINATION lib/cmake/foolib)
 
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/  DESTINATION include)
