@@ -13,9 +13,9 @@ target_link_libraries(foolib
 
 include(CMakePackageConfigHelpers)
 
-target_include_directories(mylib INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
+# target_include_directories(foolib INTERFACE
+#     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#     $<INSTALL_INTERFACE:include>)
 
 # バイナリ: 引数3個目にRUNTIMEを指定する。
 # INSTALL(TARGETS lan_router RUNTIME DESTINATION bin)
