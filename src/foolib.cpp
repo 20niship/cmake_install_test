@@ -1,4 +1,4 @@
-#include "lib.hpp"
+#include <foolib.hpp>
 
 void hello() { std::cout << " Hello World" << std::endl; }
 void my_img_show() {
