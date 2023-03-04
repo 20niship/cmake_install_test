@@ -5,15 +5,16 @@ add_library(foolib STATIC src/foolib.cpp )
 target_link_libraries(foolib 
   ${OpenCV_LIBRARIES}
 )
-include_directories(
+target_include_directories(
+  foolib PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${OpenCV_INCLUDE_DIR}
 )
 
 include(CMakePackageConfigHelpers)
-target_include_directories(foolib PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-    $<INSTALL_INTERFACE:include>)
+# target_include_directories(foolib INTERFACE
+#     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#     $<INSTALL_INTERFACE:include>)
 
 # バイナリ: 引数3個目にRUNTIMEを指定する。
 # INSTALL(TARGETS lan_router RUNTIME DESTINATION bin)
