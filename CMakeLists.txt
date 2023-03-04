@@ -13,7 +13,7 @@ target_link_libraries(foolib
 # バイナリ: 引数3個目にRUNTIMEを指定する。
 # INSTALL(TARGETS lan_router RUNTIME DESTINATION bin)
 # ライブラリ: 引数3個目にLIBRARY を指定する。
-INSTALL(TARGETS eth_landevice LIBRARY DESTINATION lib)
+INSTALL(TARGETS foolib LIBRARY DESTINATION lib)
 # それ以外(スクリプトやconfファイル): 引数1個目にFILESを指定する。
-INSTALL(FILES lan_interface.conf DESTINATION conf PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+# INSTALL(FILES lan_interface.conf DESTINATION conf PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 
