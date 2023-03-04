@@ -1,18 +1,17 @@
 cmake_minimum_required(VERSION 3.13)
 project(foolib CXX)
 find_package(OpenCV REQUIRED)
-include_directories(
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${OpenCV_INCLUDE_DIR}
-)
 add_library(foolib STATIC src/foolib.cpp )
 target_link_libraries(foolib 
   ${OpenCV_LIBRARIES}
 )
-
+target_include_directories(
+  foolib
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${OpenCV_INCLUDE_DIR}
+)
 
 include(CMakePackageConfigHelpers)
-
 # target_include_directories(foolib INTERFACE
 #     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 #     $<INSTALL_INTERFACE:include>)
